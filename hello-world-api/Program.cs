@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -19,7 +19,9 @@ namespace hello_world_api
 
         public static IWebHost BuildWebHost(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
-                .UseStartup<Startup>()
+                // Bind to all network interfaces (0.0.0.0) and listen on port 5000
+                .UseUrls("http://0.0.0.0:5000")  
+                .UseStartup<Startup>()  // Specify the Startup class
                 .Build();
     }
 }
